@@ -1,0 +1,17 @@
+# Ambiente
+venv/
+__pycache__/
+*.pyc
+
+# Artefatos de entrega
+submission_Amadeu/
+*.zip
+
+# Dados
+data/
+gold/
+dq/
+
+# Spark
+spark-warehouse/
+

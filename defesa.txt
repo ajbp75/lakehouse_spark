@@ -1,0 +1,167 @@
+Perfeito. Abaixo está um **resumo de defesa enxuto, estudável e direto**, exatamente no nível que costuma cair em **conversa técnica de 5–8 minutos**.
+Se você souber responder **isso aqui**, você passa tranquilo.
+
+---
+
+# 🧠 Defesa Técnica — Teste Sonar (Guia de Estudo)
+
+## 1️⃣ Visão geral da solução (30–40s)
+
+**Pergunta típica:** *“Explica rapidamente o que você construiu.”*
+
+> Implementei um mini Lakehouse com camadas Bronze, Silver e Gold a partir de CSVs com problemas propositais.
+> Na Bronze fiz ingestão bruta, na Silver tratei qualidade, deduplicação e tipagem, e na Gold modelei um Star Schema mínimo com uma dimensão de cliente, duas tabelas fato e uma dimensão de data opcional.
+> Entreguei também checks de Data Quality, log de execução e métricas SQL.
+
+---
+
+## 2️⃣ Bronze → Silver → Gold (conceito)
+
+**Pergunta:** *“O que muda de uma camada para outra?”*
+
+* **Bronze**: dados como vieram, sem regra de negócio
+* **Silver**: limpeza, deduplicação, tratamento de nulos e chaves
+* **Gold**: dados prontos para consumo analítico (modelagem dimensional)
+
+👉 A Gold é **idempotente**: rodar 2x não duplica dados.
+
+---
+
+## 3️⃣ Deduplicação (ponto-chave)
+
+**Pergunta:** *“Como você tratou duplicidades?”*
+
+Usei `row_number()` com `Window.partitionBy().orderBy(desc)`:
+
+* `customers`: `customer_id`, mantendo o maior `created_at`
+* `work_orders`: `work_order_id`, mantendo o maior `updated_at`
+* `parts_sales`: `sale_id`, mantendo o maior `updated_at`
+
+👉 Critério temporal explícito e documentado.
+
+---
+
+## 4️⃣ Tratamento de nulos
+
+**Pergunta:** *“Como lidou com campos críticos nulos?”*
+
+* `fact_work_order.order_date`: registros descartados (campo essencial)
+* `fact_parts_sales.unit_price`: substituído por 0
+* Recalculei `total_price` após tipagem numérica para evitar erro de precisão
+
+👉 Decisões pragmáticas, alinhadas ao domínio.
+
+---
+
+## 5️⃣ Tratamento de órfãos
+
+**Pergunta:** *“E chaves quebradas?”*
+
+* `fact_work_order.customer_id` inexistente → mapeado para `UNKNOWN (-1)`
+* `fact_parts_sales` sem `work_order_id` válido → removido via `inner join`
+
+👉 Mantive integridade referencial na Gold.
+
+---
+
+## 6️⃣ Data Quality (DQ)
+
+**Pergunta:** *“Que tipo de qualidade você validou?”*
+
+Implementei três checks mínimos:
+
+1. Taxa de nulos em colunas críticas
+2. Taxa de duplicidade por chave
+3. Taxa de órfãos entre fatos e dimensões
+
+Cada check gera:
+
+* valor da métrica
+* threshold
+* status PASS/FAIL
+* descrição curta
+
+Resultados em `dq_results.csv`.
+
+---
+
+## 7️⃣ Log de execução
+
+**Pergunta:** *“Como você sabe que a pipeline rodou corretamente?”*
+
+Gerei `pipeline_runs.csv` com:
+
+* `run_id`
+* timestamps de início e fim
+* duração
+* número de linhas geradas em cada tabela Gold
+
+👉 Isso permite auditoria simples e rastreabilidade.
+
+---
+
+## 8️⃣ Dimensão de data (bônus)
+
+**Pergunta:** *“Por que criar uma dim_date?”*
+
+Criei uma `dim_date` opcional:
+
+* derivada exclusivamente das datas presentes nos fatos
+* com chave `YYYYMMDD`
+* atributos úteis para BI (mês, ano, dia da semana, fim de semana)
+
+👉 Evitei calendário artificial fora do domínio real dos dados.
+
+---
+
+## 9️⃣ SQL / Métricas
+
+**Pergunta:** *“Que tipo de análise dá para fazer?”*
+
+Implementei 3 métricas:
+
+1. Receita de peças por cliente (últimos 90 dias)
+2. Ordens por status por mês
+3. Ticket médio de peças por ordem
+
+Todas baseadas nas tabelas Gold.
+
+---
+
+## 🔟 Por que não usei Fabric diretamente?
+
+(se perguntarem — resposta madura)
+
+> Não tive permissão ativa para criar Lakehouse no Fabric, então implementei a lógica em PySpark local, mantendo conceitos equivalentes de Lakehouse.
+> A solução é portável para Fabric ou Databricks sem mudança conceitual.
+
+---
+
+## 🧩 Pergunta final clássica
+
+**“O que você melhoraria com mais tempo?”**
+
+Resposta perfeita:
+
+* Automatizar execução (orquestração)
+* Versionar DQ thresholds
+* Criar testes automatizados
+* Expandir dimensão de data (feriados, fiscal)
+
+👉 Mostra visão de evolução, sem arrependimento.
+
+---
+
+## 🏁 Dica final (importante)
+
+Não decore frases.
+**Entenda a lógica**, porque:
+
+* suas decisões foram corretas
+* todas são defensáveis
+* não há gambiarra
+
+Se quiser, no próximo passo posso:
+
+* simular **a defesa em formato de entrevista** (perguntas e respostas rápidas), ou
+* condensar isso num **one-pager de estudo** para revisar em 5 minutos.
