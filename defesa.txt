@@ -10,7 +10,9 @@ Se você souber responder **isso aqui**, você passa tranquilo.
 **Pergunta típica:** *“Explica rapidamente o que você construiu.”*
 
 > Implementei um mini Lakehouse com camadas Bronze, Silver e Gold a partir de CSVs com problemas propositais.
-> Na Bronze fiz ingestão bruta, na Silver tratei qualidade, deduplicação e tipagem, e na Gold modelei um Star Schema mínimo com uma dimensão de cliente, duas tabelas fato e uma dimensão de data opcional.
+> Na Bronze fiz ingestão bruta, na Silver tratei qualidade, deduplicação e tipagem, 
+> e na Gold modelei um Star Schema mínimo com uma dimensão de cliente, 
+> duas tabelas fato e uma dimensão de data opcional.
 > Entreguei também checks de Data Quality, log de execução e métricas SQL.
 
 ---
