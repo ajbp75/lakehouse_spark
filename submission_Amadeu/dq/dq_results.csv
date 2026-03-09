@@ -1,0 +1,4 @@
+check_name,table_name,metric_value,threshold,status,details
+null_rate_customer_id,dim_customer,0.0,0.01,PASS,customer_id should not be null
+duplicate_rate_work_order,fact_work_order,0.0,0.0,PASS,work_order_id must be unique
+orphan_rate_parts_sales,fact_parts_sales,0.0,0.0,PASS,sales must reference valid work_order

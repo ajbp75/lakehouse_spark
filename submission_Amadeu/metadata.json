@@ -1,0 +1,23 @@
+{
+  "candidate": "Amadeu Paes",
+  "route": "A_notebook",
+  "dedup_rule": {
+    "customers": "customer_id keep max(created_at)",
+    "work_orders": "work_order_id keep max(updated_at)",
+    "parts_sales": "sale_id keep max(updated_at)"
+  },
+  "null_handling": {
+    "fact_work_order.order_date": "dropped",
+    "fact_parts_sales.unit_price": "replaced_with_zero"
+  },
+  "orphan_handling": {
+    "fact_work_order.customer_id": "mapped_to_UNKNOWN (-1)",
+    "fact_parts_sales.work_order_id": "removed (inner join)"
+  },
+  "dq_thresholds": {
+    "null_rate_critical_max": 0.01,
+    "dup_rate_key_max": 0.0,
+    "orphan_rate_max": 0.0
+  },
+  "dataset_id": "SONAR_FABRIC_TEST_V1_2026-02-06"
+}

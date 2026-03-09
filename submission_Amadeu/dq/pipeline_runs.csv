@@ -1,0 +1,2 @@
+run_id,started_at,ended_at,duration_seconds,rows_dim_customer,rows_fact_work_order,rows_fact_parts_sales
+2195933e-8620-4152-bc09-dd96826a42df,2026-02-13T17:36:55.022841,2026-02-13T17:37:32.830514,37.807673,81,397,923

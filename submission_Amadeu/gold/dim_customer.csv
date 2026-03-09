@@ -1,0 +1,82 @@
+customer_id,customer_name,segment,state
+C0001,Cliente 1,B,BA
+C0002,Cliente 2,C,SP
+C0003,Cliente 3,C,GO
+C0004,Cliente 4,B,MG
+C0005,Cliente 5,A,SP
+C0006,Cliente 6,A,BA
+C0007,Cliente 7,A,BA
+C0008,Cliente 8,C,MS
+C0009,Cliente 9,B,MT
+C0010,Cliente 10,C,PR
+C0011,Cliente 11,A,GO
+C0012,Cliente 12,C,MS
+C0013,Cliente 13,C,PR
+C0014,Cliente 14,A,PR
+C0015,Cliente 15,A,SP
+C0016,Cliente 16,A,PR
+C0017,Cliente 17,B,MT
+C0018,Cliente 18 (Atualizado),B,BA
+C0019,Cliente 19,B,MS
+C0020,Cliente 20,B,PR
+C0021,Cliente 21,B,SP
+C0022,Cliente 22,A,MT
+C0023,Cliente 23,B,MG
+C0024,Cliente 24,B,BA
+C0025,Cliente 25,B,BA
+C0026,Cliente 26,C,MS
+C0027,Cliente 27,A,BA
+C0028,Cliente 28,B,PR
+C0029,Cliente 29,,SP
+C0030,Cliente 30,A,BA
+C0031,Cliente 31,B,BA
+C0032,Cliente 32,A,MG
+C0033,Cliente 33,,MG
+C0034,Cliente 34,C,GO
+C0035,Cliente 35,C,MT
+C0036,Cliente 36,C,PR
+C0037,Cliente 37 (Atualizado),,BA
+C0038,Cliente 38,A,BA
+C0039,Cliente 39,B,SP
+C0040,Cliente 40,B,GO
+C0041,Cliente 41,A,MT
+C0042,Cliente 42 (Atualizado),B,GO
+C0043,Cliente 43,A,MS
+C0044,Cliente 44,C,MT
+C0045,Cliente 45,B,BA
+C0046,Cliente 46,B,BA
+C0047,Cliente 47,B,MT
+C0048,Cliente 48,B,BA
+C0049,Cliente 49,B,PR
+C0050,Cliente 50,A,MT
+C0051,Cliente 51,C,GO
+C0052,Cliente 52,C,MT
+C0053,Cliente 53,C,BA
+C0054,Cliente 54,C,PR
+C0055,Cliente 55,B,PR
+C0056,Cliente 56,C,MS
+C0057,Cliente 57,A,GO
+C0058,Cliente 58,A,MG
+C0059,Cliente 59,A,MG
+C0060,Cliente 60,B,MT
+C0061,Cliente 61 (Atualizado),B,MS
+C0062,Cliente 62,B,SP
+C0063,Cliente 63 (Atualizado),C,MT
+C0064,Cliente 64,B,MS
+C0065,Cliente 65,B,GO
+C0066,Cliente 66,B,GO
+C0067,Cliente 67,A,GO
+C0068,Cliente 68,C,GO
+C0069,Cliente 69,A,GO
+C0070,Cliente 70,C,MS
+C0071,Cliente 71,C,MS
+C0072,Cliente 72,A,PR
+C0073,Cliente 73,A,MG
+C0074,Cliente 74,C,BA
+C0075,Cliente 75,C,GO
+C0076,Cliente 76,C,SP
+C0077,Cliente 77,C,BA
+C0078,Cliente 78,A,MS
+C0079,Cliente 79,B,SP
+C0080,Cliente 80,A,SP
+-1,UNKNOWN,UNKNOWN,UNKNOWN

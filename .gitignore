@@ -3,10 +3,6 @@ venv/
 __pycache__/
 *.pyc
 
-# Artefatos de entrega
-submission_Amadeu/
-*.zip
-
 # Spark
 spark-warehouse/
 
